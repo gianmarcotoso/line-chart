@@ -156,4 +156,5 @@ module.exports = function(grunt) {
   grunt.registerTask('travis', ['default', 'shell:visual']);
   grunt.registerTask('visual', ['concat', 'coffeelint', 'coffee', 'uglify', 'shell:visual']);
   grunt.registerTask('default', ['concat', 'coffeelint', 'coffee', 'uglify', 'karma:minified']);
+	grunt.registerTask('buttasu', ['concat', 'coffeelint', 'coffee', 'uglify']);
 };

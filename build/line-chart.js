@@ -1,6 +1,6 @@
 
 /*
-line-chart - v1.1.7 - 05 February 2015
+line-chart - v1.1.7 - 19 March 2015
 https://github.com/n3-charts/line-chart
 Copyright (c) 2015 n3-charts
  */
@@ -898,6 +898,7 @@ mod.factory('n3utils', [
           series: [],
           drawLegend: true,
           drawDots: true,
+          drawScrubber: true,
           stacks: [],
           columnsHGap: 5
         };
@@ -909,6 +910,7 @@ mod.factory('n3utils', [
         if (mode === 'thumbnail') {
           options.drawLegend = false;
           options.drawDots = false;
+          options.drawScrubber = false;
           options.tooltip = {
             mode: 'none',
             interpolate: false
@@ -922,6 +924,7 @@ mod.factory('n3utils', [
         this.sanitizeTooltip(options);
         options.drawLegend = options.drawLegend !== false;
         options.drawDots = options.drawDots !== false;
+        options.drawScrubber = options.drawScrubber !== false;
         if (!angular.isNumber(options.columnsHGap)) {
           options.columnsHGap = 5;
         }
@@ -998,6 +1001,7 @@ mod.factory('n3utils', [
             delete s.lineMode;
             delete s.drawDots;
             delete s.dotSize;
+            delete s.drawScrubber;
           } else if (!/^\d+px$/.test(s.thickness)) {
             s.thickness = '1px';
           }
@@ -1364,7 +1368,7 @@ mod.factory('n3utils', [
         data.forEach(function(series, index) {
           var item, lText, left, rText, right, side, sizes, text, v;
           item = svg.select(".scrubberItem.series_" + index);
-          if (options.series[index].visible === false) {
+          if (options.series[index].visible === false || options.series[index].drawScrubber === false) {
             item.attr('opacity', 0);
             return;
           }
