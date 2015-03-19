@@ -1268,7 +1268,7 @@ mod.factory('n3utils', ['$window', '$log', '$rootScope', ($window, $log, $rootSc
           if options.series[index].visible is false or options.series[index].drawScrubber is false
             item.attr('opacity', 0)
             return
-
+          
           item.attr('opacity', 1)
 
           v = that.getClosestPoint(series.values, axes.xScale.invert(x))
@@ -1311,7 +1311,7 @@ mod.factory('n3utils', ['$window', '$log', '$rootScope', ($window, $log, $rootSc
         tickLength = Math.max(15, 100/columnWidth)
 
         data.forEach (series, index) ->
-          if options.series[index].visible is false
+          if options.series[index].visible is false or options.series[index].drawScrubber is false
             return
 
           p = positions[index]

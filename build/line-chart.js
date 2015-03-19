@@ -1418,7 +1418,7 @@ mod.factory('n3utils', [
         tickLength = Math.max(15, 100 / columnWidth);
         return data.forEach(function(series, index) {
           var item, p, tt, xOffset;
-          if (options.series[index].visible === false) {
+          if (options.series[index].visible === false || options.series[index].drawScrubber === false) {
             return;
           }
           p = positions[index];
