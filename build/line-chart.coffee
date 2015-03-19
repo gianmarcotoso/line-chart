@@ -1265,7 +1265,7 @@ mod.factory('n3utils', ['$window', '$log', '$rootScope', ($window, $log, $rootSc
         data.forEach (series, index) ->
           item = svg.select(".scrubberItem.series_#{index}")
 
-          if options.series[index].visible is false || options.series[index].drawScrubber is false
+          if options.series[index].visible is false or options.series[index].drawScrubber is false
             item.attr('opacity', 0)
             return
 
